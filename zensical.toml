@@ -131,8 +131,6 @@ pdf_publisher = "SEI · ENACTS"
 pdf_date = "November 2026"
 
 
-
-
 [project.plugins.mkdocs-video]
 is_video = true
 video_controls = true
@@ -153,3 +151,7 @@ pymdownx.superfences.custom_fences = [
   { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
 ]
 
+[project.plugins.glightbox]
+enabled = true
+auto = true
+auto_caption = true
