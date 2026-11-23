@@ -1,0 +1,367 @@
+/* Optional figure sizing for the Zensical renderer. */
+.md-typeset img[alt^="Navigation:"] {
+  display: block;
+  width: 520px;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+}
+
+.md-typeset img[alt^="Overview:"] {
+  display: block;
+  width: 1000px;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+}
+
+.md-typeset img[alt^="Panel:"] {
+  display: block;
+  width: 460px;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+}
+
+.md-typeset .mermaid {
+  display: flex;
+  justify-content: center;
+}
+
+.md-typeset .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+@media print {
+  .md-typeset img[alt^="Navigation:"] {
+    max-width: 115mm;
+  }
+  .md-typeset img[alt^="Panel:"] {
+    max-width: 105mm;
+  }
+}
+
+
+/* Printed page size, margins, and footer. */
+@page {
+  size: A4;
+  margin: 18mm 18mm 22mm;
+
+  @bottom-left {
+    content: "© 2026 · Maprooms User Documentation";
+    width: 50%;
+    text-align: left;
+    vertical-align: middle;
+    font: 8pt Arial, sans-serif;
+    color: #61717a;
+    border-top: 0.5pt solid #bac8ce;
+    margin-top: 5mm;
+  }
+
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+    width: 50%;
+    text-align: right;
+    vertical-align: middle;
+    font: 8pt Arial, sans-serif;
+    color: #61717a;
+    border-top: 0.5pt solid #bac8ce;
+    margin-top: 5mm;
+  }
+}
+
+@media print {
+  /* Preserve figure and background colors. */
+  .md-typeset,
+  .md-typeset * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Hide website navigation in the printed document. */
+  .md-header,
+  .md-tabs,
+  .md-sidebar,
+  .md-footer,
+  .md-top {
+    display: none !important;
+  }
+
+  .md-main__inner {
+    display: block;
+  }
+
+  .md-content__inner {
+    margin: 0;
+    padding: 0;
+  }
+
+  .md-typeset {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: #183642;
+  }
+
+  /* Main manual title with a line above it. */
+  .md-typeset h1 {
+    margin: 0 0 9mm;
+    padding-top: 5mm;
+    border-top: 2pt solid #315563;
+    font-family: Arial, sans-serif;
+    font-size: 27pt;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.4pt;
+    color: #183642;
+  }
+
+  .md-typeset h2 {
+    margin-top: 8mm;
+    font-size: 16pt;
+    font-weight: 700;
+    color: #183642;
+  }
+
+  .md-typeset h3 {
+    font-size: 12pt;
+    font-weight: 700;
+    color: #315563;
+  }
+
+  .md-typeset h1,
+  .md-typeset h2,
+  .md-typeset h3 {
+    break-after: avoid;
+  }
+
+  .md-typeset p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Allow tables to flow across printed pages. */
+  .md-typeset .md-typeset__scrollwrap,
+  .md-typeset .md-typeset__table {
+    display: block;
+    overflow: visible;
+  }
+
+  .md-typeset th,
+  .md-typeset td {
+    overflow-wrap: anywhere;
+  }
+
+  .md-typeset thead {
+    display: table-header-group;
+  }
+
+  .md-typeset tr,
+  .md-typeset img,
+  .md-typeset .mermaid {
+    break-inside: avoid;
+  }
+
+  .md-typeset img {
+    max-height: 180mm;
+    object-fit: contain;
+  }
+
+  .md-typeset .mermaid svg {
+    max-width: 100%;
+    max-height: 160mm;
+    height: auto;
+  }
+}
+
+
+
+/* Front pages are hidden on screen. */
+.pdf-cover,
+.pdf-blank-page {
+  display: none;
+}
+
+/* Suppress running headers and footers on the front pages. */
+@page :first, pdf-blank {
+  size: A4;
+  margin: 18mm 18mm 22mm;
+
+  @top-left {
+    content: none;
+    border: 0;
+  }
+
+  @top-center {
+    content: none;
+    border: 0;
+  }
+
+  @top-right {
+    content: none;
+    border: 0;
+  }
+
+  @bottom-left {
+    content: none;
+    border: 0;
+  }
+
+  @bottom-center {
+    content: none;
+    border: 0;
+  }
+
+  @bottom-right {
+    content: none;
+    border: 0;
+  }
+}
+
+@media print {
+  html,
+  body {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .md-main,
+  .md-main__inner,
+  .md-content,
+  .md-content__inner {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .pdf-cover {
+    display: block;
+    page: auto;
+    position: relative;
+    box-sizing: border-box;
+
+    /* A4 printable height: 297 − 18 − 22 = 257 mm.
+       Leave 1 mm for rounding differences. */
+    height: 256mm;
+
+    border-top: 0.6pt solid #111;
+    color: #111;
+    background: #fff;
+    font-family: Arial, sans-serif;
+    break-inside: avoid;
+    break-after: page;
+  }
+
+  .pdf-cover__branding {
+    position: absolute;
+    top: 8mm;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12mm;
+  }
+
+  .md-typeset .pdf-cover__main-logo {
+    display: block;
+    width: 130mm;
+    max-width: 78%;
+    height: auto;
+    margin: 0;
+  }
+
+  .md-typeset .pdf-cover__partner-logo {
+    display: block;
+    width: 22mm;
+    max-width: 15%;
+    height: auto;
+    margin: 0;
+  }
+
+  .pdf-cover__heading {
+    position: absolute;
+    top: 108mm;
+    left: 0;
+    right: 0;
+    text-align: right;
+  }
+
+  .md-typeset .pdf-cover__heading h1 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: #111;
+    font: 700 23pt/1.2 Arial, sans-serif;
+    letter-spacing: normal;
+  }
+
+  .pdf-cover__heading p {
+    margin: 4mm 0 0;
+    font: italic 14pt/1.3 Arial, sans-serif;
+  }
+
+  .pdf-cover__publisher {
+    position: absolute;
+    top: 174mm;
+    left: 0;
+    right: 0;
+    margin: 0;
+    text-align: right;
+    font: 700 13pt/1.3 Arial, sans-serif;
+  }
+
+  .pdf-cover__date {
+    position: absolute;
+    right: 0;
+    bottom: 12mm;
+    margin: 0;
+    font: 10pt/1.3 Arial, sans-serif;
+  }
+
+  .pdf-blank-page {
+    display: block;
+    page: pdf-blank;
+    height: 1mm;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #fff;
+    break-after: page;
+  }
+}
+
+
+@media print {
+  /* Remove the theme spacer before the cover. */
+  .md-content__inner::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* Remove the empty navigation anchor from print layout. */
+  .md-content__inner > #__skip {
+    display: none !important;
+  }
+}
+
+/*video no added on pdf*/
+@media print {
+  .md-typeset .video-container,
+  .md-typeset video {
+    display: none !important;
+  }
+}
+
+.md-typeset .mermaid {
+  display: block;
+  box-sizing: border-box;
+  width: 80%;
+  max-width: 520px;
+  min-width: 0;
+  margin: 1rem auto;
+  text-align: center;
+  overflow-x: auto;
+}
+

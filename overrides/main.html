@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+
+  <style media="print">
+    @page {
+      margin: 18mm 18mm 22mm;
+
+      @top-center {
+        content: none;
+      }
+
+      @top-left {
+        content: "MAPROOMS";
+        width: 30%;
+        text-align: left;
+        vertical-align: middle;
+        font: 700 7.5pt Arial, sans-serif;
+        color: #315563;
+        border-bottom: 0.5pt solid #bac8ce;
+        margin-bottom: 3mm;
+      }
+
+      @top-right {
+        content: {{ page.title | striptags | tojson }};
+        width: 70%;
+        text-align: right;
+        vertical-align: middle;
+        font: 8pt Arial, sans-serif;
+        color: #61717a;
+        border-bottom: 0.5pt solid #bac8ce;
+        margin-bottom: 3mm;
+      }
+    }
+  </style>
+{% endblock %}
+
+
+{% block content %}
+  {% if page %}
+    <section class="pdf-cover" aria-label="PDF cover">
+      <div class="pdf-cover__branding">
+        <img class="pdf-cover__main-logo"
+             src="{{ 'img/logo-maproom.png' | url }}"
+             alt="ENACTS Maproom">
+
+        <img class="pdf-cover__partner-logo"
+             src="{{ config.theme.logo | url }}"
+             alt="SEI">
+      </div>
+
+      <div class="pdf-cover__heading">
+        <h1>
+          {{ page.meta.title | default(page.title, true) | striptags | e }}
+        </h1>
+        <p>
+          {{ config.extra.pdf_release | default('User guide', true) | e }}
+        </p>
+      </div>
+
+      <p class="pdf-cover__publisher">
+        {{ config.extra.pdf_publisher | default(config.site_name, true) | e }}
+      </p>
+
+      {% if config.extra.pdf_date %}
+        <p class="pdf-cover__date">
+          {{ config.extra.pdf_date | e }}
+        </p>
+      {% endif %}
+    </section>
+
+    <div class="pdf-blank-page" aria-hidden="true"></div>
+  {% endif %}
+
+  {{ super() }}
+{% endblock %}
+

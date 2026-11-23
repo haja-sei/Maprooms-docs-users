@@ -1,0 +1,155 @@
+
+[project]
+site_name = "Maprooms User Documentation"
+site_url = "https://haja-sei.github.io/Maprooms-docs-users/"
+docs_dir = "docs"
+site_dir = "site"
+
+nav = [
+  { "Home" = "index.md" },
+  { "Outline" = "outline.md" },
+  { "Navigating Maprooms" = "common-navigation.md" },
+
+  { "Climate" = [
+    { "Historical Analysis" = [
+      { "Climate Analysis" = [
+        { "Daily Climate Analysis" = "ca-daily.md" },
+        { "Dekadal Climate Analysis" = "ca-dekadal.md" },
+        { "Monthly Climate Analysis" = "ca-monthly.md" },
+        { "Seasonal Climate Analysis" = "ca-seasonal.md" },
+        { "Climate Teleconnections" = "ca-telecon.md" },
+      ] },
+    ] },
+
+    { "Monitoring" = [
+      { "Dekadal Climate Monitoring" = "cm-dekad.md" },
+      { "Monthly Climate Monitoring" = "cm-monthly.md" },
+      { "Seasonal Climate Monitoring" = "cm-season.md" },
+    ] },
+
+    { "Climate Forecast" = [
+      { "10-Days Forecast" = "cf-10days.md" },
+      { "Seasonal Forecast" = "cf-seasonal.md" },
+    ] },
+
+    { "Climate Projection" = [
+      { "Monthly SPI" = "cp-monthlySpi.md" },
+      { "Seasonal Change" = "cp-seasonalChange.md" },
+      { "Model Agreement" = "cp-modelagreement.md" },
+    ] },
+  ] },
+
+  { "Climate and Agriculture" = [
+    { "Historical Analysis" = [
+      { "Rainy Season Analysis" = "cagri-historic.md" },
+      { "Planting and Harvest Decision Support" = "cagri-planting.md" },
+      { "Climate Suitability for Crops" = "cagri-climatesuitability.md" },
+    ] },
+  ] },
+
+  { "Climate and Health" = [
+    { "Malaria Historical Analysis" = [
+      { "Seasonal Climatic Suitability for Malaria Transmission" = "chealth-cmst.md" },
+      # { "Measures of Vegetation" = "chealth-ndvi.md" },
+      { "Country Average WASP Index" = "chealth-wasp.md" },
+    ] },
+  ] },
+
+  { "Climate and Water" = [
+    { "Historical Analysis" = [
+      { "Climate Analysis" = [
+        { "Daily Climate Analysis" = "ca-daily.md" },
+        { "Dekadal Climate Analysis" = "ca-dekadal.md" },
+        { "Monthly Climate Analysis" = "ca-monthly.md" },
+        { "Seasonal Climate Analysis" = "ca-seasonal.md" },
+        { "Climate Teleconnections" = "ca-telecon.md" },
+      ] },
+    ] },
+
+    { "Monitoring" = [
+      { "Dekadal Climate Monitoring" = "cm-dekad.md" },
+      { "Monthly Climate Monitoring" = "cm-monthly.md" },
+      { "Seasonal Climate Monitoring" = "cm-season.md" },
+    ] },
+
+    { "Climate Forecast" = [
+      { "10-Days Forecast" = "cf-10days.md" },
+      { "Seasonal Forecast" = "cf-seasonal.md" },
+    ] },
+
+    { "Climate Projection" = [
+      { "Monthly SPI" = "cp-monthlySpi.md" },
+      { "Seasonal Change" = "cp-seasonalChange.md" },
+      { "Model Agreement" = "cp-modelagreement.md" },
+    ] },
+  ] },
+
+  { "Disaster Risk Management" = [
+    { "Risk Analysis" = [
+      { "SPI" = "drm-ra-spi.md" },
+      { "Extreme Rainfall/Temperrature Analysis" = "drm-ra-extrain.md" },
+      # { "Extreme Temperature Analysis" = "drm-ra-exttemp.md" },
+    ] },
+
+    { "Risk Anticipation" = [
+      { "Precipitation Flexible Seasonal NextGen Forecast" = "cf-seasonal.md" },
+    ] },
+
+    { "Risk Monitoring" = [
+      { "Dekadal Rainfall Monitoring" = "cm-dekad.md" },
+      { "Monthly SPI Monitoring" = "cm-monthly.md" },
+      { "Seasonal SPI Monitoring" = "cm-season.md" },
+    ] },
+  ] },
+]
+
+
+
+
+extra_css = [
+  "stylesheets/extra.css",
+  "stylesheets/navigation-figures.css",
+]
+
+copyright = "© 2026 · Maprooms User Documentation"
+
+[project.theme]
+custom_dir = "overrides"
+logo = "img/sei_logo.png"
+
+features = [
+  "toc.follow",
+  "content.code.copy",
+  "navigation.footer",
+]
+
+[project.extra]
+generator = false
+
+pdf_release = "User guide. Release 1.0.0"
+pdf_publisher = "SEI · ENACTS"
+pdf_date = "November 2026"
+
+
+
+
+[project.plugins.mkdocs-video]
+is_video = true
+video_controls = true
+video_autoplay = true
+video_loop = false
+
+
+[project.markdown_extensions]
+tables = {}
+toc.toc_depth = 4
+pymdownx.highlight = {}
+attr_list = {}
+md_in_html = {}
+pymdownx.details = {}
+pymdownx.tabbed.alternate_style = true
+
+pymdownx.superfences.custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
+
