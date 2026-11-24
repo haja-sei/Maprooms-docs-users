@@ -33,41 +33,69 @@
         margin-bottom: 3mm;
       }
     }
+
+    @page :first {
+      size: A4 portrait;
+      margin: 0;
+
+      @top-left { content: none; border: 0; }
+      @top-center { content: none; border: 0; }
+      @top-right { content: none; border: 0; }
+
+      @bottom-left { content: none; border: 0; }
+      @bottom-center { content: none; border: 0; }
+      @bottom-right { content: none; border: 0; }
+    }
+
   </style>
 {% endblock %}
 
 
 {% block content %}
   {% if page %}
-    <section class="pdf-cover" aria-label="PDF cover">
-      <div class="pdf-cover__branding">
-        <img class="pdf-cover__main-logo"
-             src="{{ 'img/logo-maproom.png' | url }}"
-             alt="ENACTS Maproom">
 
-        <img class="pdf-cover__partner-logo"
-             src="{{ config.theme.logo | url }}"
-             alt="SEI">
-      </div>
+    <section class="pdf-cover" aria-label="PDF cover">
+<!--       <img class="pdf-cover__shape"
+           src="{{ 'img/sei-brand-shape.svg' | url }}"
+           alt=""
+           aria-hidden="true"> -->
+
+      <div class="pdf-cover__content">
+        <div class="pdf-cover__branding">
+          <img class="pdf-cover__sei-logo"
+               src="{{ 'img/SEI-Logo-Extended-White-RGB.png' | url }}"
+               alt="Stockholm Environment Institute">
+        </div>
+
 
       <div class="pdf-cover__heading">
-        <h1>
+        <h1>Maprooms Documentation for Users</h1>
+
+        <h2 class="pdf-cover__page-title">
           {{ page.meta.title | default(page.title, true) | striptags | e }}
-        </h1>
+        </h2>
+
         <p>
           {{ config.extra.pdf_release | default('User guide', true) | e }}
         </p>
       </div>
 
-      <p class="pdf-cover__publisher">
-        {{ config.extra.pdf_publisher | default(config.site_name, true) | e }}
-      </p>
-
-      {% if config.extra.pdf_date %}
-        <p class="pdf-cover__date">
-          {{ config.extra.pdf_date | e }}
+        <p class="pdf-cover__publisher">
+          {{ config.extra.pdf_publisher | default(config.site_name, true) | e }}
         </p>
-      {% endif %}
+
+        <div class="pdf-cover__meta">
+          <img class="pdf-cover__enacts-logo"
+               src="{{ 'img/logo-maproom.png' | url }}"
+               alt="ENACTS Maproom">
+
+          {% if config.extra.pdf_date %}
+            <p class="pdf-cover__date">
+              {{ config.extra.pdf_date | e }}
+            </p>
+          {% endif %}
+        </div>
+      </div>
     </section>
 
     <div class="pdf-blank-page" aria-hidden="true"></div>

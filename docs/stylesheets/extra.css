@@ -190,3 +190,86 @@
     margin-inline: auto;
   }
 }
+
+
+
+:root {
+  --sei-green: #00D29A;
+  --sei-dark-green: #004D33;
+  --sei-charcoal: #263238;
+  --sei-light-grey: #EBF0F8;
+  --sei-border: #DDE2EB;
+  --sei-secondary-text: #617076;
+  --md-text-font: "Arial";
+}
+
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: #FFFFFF;
+  --md-default-fg-color: var(--sei-charcoal);
+  --md-default-fg-color--light: var(--sei-secondary-text);
+  --md-default-fg-color--lightest: var(--sei-light-grey);
+
+  --md-primary-fg-color: var(--sei-dark-green);
+  --md-primary-bg-color: #FFFFFF;
+  --md-accent-fg-color: var(--sei-dark-green);
+  --md-typeset-a-color: var(--sei-dark-green);
+}
+
+.md-typeset table:not([class]) thead th {
+  background-color: var(--sei-charcoal);
+  color: #FFFFFF;
+}
+
+@media screen {
+  .md-header,
+  .md-tabs {
+    background-color: #FFFFFF;
+    color: var(--sei-charcoal);
+  }
+
+  .md-header .md-logo {
+    padding: 12px;
+  }
+
+  .md-header .md-logo img {
+    width: auto;
+    height: 24px;
+  }
+
+  [data-md-color-scheme="default"] .maprooms-home {
+    --home-background: var(--sei-light-grey);
+    --home-border: var(--sei-border);
+    --home-text: var(--sei-charcoal);
+  }
+
+  .maprooms-home .home-logo {
+    padding: 24px;
+    background-color: #FFFFFF;
+  }
+
+  .maprooms-home .home-logo img {
+    width: 200px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .md-typeset .md-button--primary {
+    background-color: var(--sei-green);
+    border-color: var(--sei-dark-green);
+    color: var(--sei-charcoal);
+  }
+
+  .md-typeset .md-button:hover,
+  .md-typeset .md-button:focus-visible {
+    background-color: var(--sei-dark-green);
+    border-color: var(--sei-dark-green);
+    color: #FFFFFF;
+  }
+}
+
+@media screen and (max-width: 60em) {
+  .maprooms-home .home-logo img {
+    width: 160px;
+  }
+}
+

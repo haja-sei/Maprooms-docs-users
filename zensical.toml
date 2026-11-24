@@ -116,6 +116,7 @@ copyright = "© 2026 · Maprooms User Documentation"
 [project.theme]
 custom_dir = "overrides"
 logo = "img/sei_logo.png"
+font = false
 
 features = [
   "toc.follow",
@@ -155,3 +156,9 @@ pymdownx.superfences.custom_fences = [
 enabled = true
 auto = true
 auto_caption = true
+
+[project.theme.palette]
+scheme = "default"
+primary = "custom"
+accent = "custom"
+
